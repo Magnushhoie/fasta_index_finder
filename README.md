@@ -42,16 +42,16 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 # Python parallel processing: ~1.0  w/ 16 cores
 time python fasta_parallel.py data/humangenome.fsa 2
 
-# Python: Single-threaded: ~2.9 s
-time python fasta_single.py data/humangenome.fsa
+# BASH one-liner, finds byte offsets: ~1.1 s
+grep -A 1 -b ">" data/humangenome.fsa |  grep -Eo '^[0-9]+' |  awk '{printf "%s\n%s\n", $1-1, $1}' | tail -n +2 | paste - - - -
 
 # C++ single-threaded: ~2.5 s
 # Compile and run:
 g++ -std=c++11 -O3 fasta_singlethread_c.cpp -o fasta_singlethread_c
 time ./fasta_singlethread_c data/humangenome.fsa
 
-# BASH one-liner, finds byte offsets: ~1.1 s
-grep -A 1 -b ">" data/humangenome.fsa |  grep -Eo '^[0-9]+' |  awk '{printf "%s\n%s\n", $1-1, $1}' | tail -n +2 | paste - - - -
+# Python: Single-threaded: ~2.9 s
+time python fasta_single.py data/humangenome.fsa
 ```
 
 ### Parallel processing logic
