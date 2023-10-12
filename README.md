@@ -20,7 +20,7 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 
 Running:
 ```bash
-# Find mini.fasta header start/end, sequence start/end indices, using 2 cores
+# Find mini.fasta header start/end, sequence start/end indices, using 4 cores
 $ fasta_parallel.py data/mini.fasta 4
 
 0 8 9 246
