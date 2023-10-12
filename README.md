@@ -6,12 +6,23 @@ Prints indices of all headers and sequences in a FASTA file:
 3. Sequence start position
 4. Sequence end position
 
-E.g.
+Example input [data/mini.fasta](data/mini.fasta):
 
-```python
-fasta_single.py data/mini.fasta
+```fasta
+>1AHW_ED
+eiqlqqsgaelvrpgalvklsckasgfniKDYYmhwvkqrpeqglewigliDpENgNTIy
+dpkfqgkasitadtssntaylqlssltsedtavyycarDNSYyfdywgqgttltvss---
+-------DikmtqspssmyaslgervtitckasQdiRkYlnwyqqkpwkspktliyYats
+ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
+>1BJ1_HL
+...
+```
 
-# Returns header start/end and sequence start/end indices:
+Running:
+```bash
+# Get indices of headers start/end, sequences start/end
+$ fasta_single.py data/mini.fasta
+
 0 8 9 246
 247 255 256 499
 500 508 509 750
@@ -21,6 +32,23 @@ fasta_single.py data/mini.fasta
 1494 1502 1503 1754
 1755 1763 1764 2006
 ```
+
+## Usage and speed comparison
+
+```bash
+# Python parallel processing ( ~1.0 s for 3.0 GB FASTA file w/ 16 cores)
+time python fasta_parallel.py data/mini.fasta 2
+
+# Python: Single-threaded ( ~2.9 s for 3.0 GB FASTA file)
+time python fasta_single.py data/mini.fasta
+
+# C++ single-threaded
+g++ -std=c++11 -O3 fasta_singlethread_c.cpp -o fasta_singlethread_c
+# Run after compilation ( ~2.5 s for 3.0 GB FASTA file):
+time ./fasta_singlethread_c data/mini.fasta
+```
+
+## Parallel processing logic
 
 Since header start/end also gives start/ends of sequences
 only the first is required, found with this code logic:
@@ -56,19 +84,4 @@ with Pool(num_processes) as pool:
             for i in range(len(start_positions) - 1)
         ],
     )
-```
-
-## Usage and speed comparison
-
-```bash
-# Python parallel processing ( ~1.0 s for 3.0 GB FASTA file w/ 16 cores)
-time python fasta_parallel.py data/mini.fasta 2
-
-# Python: Single-threaded ( ~2.9 s for 3.0 GB FASTA file)
-time python fasta_single.py data/mini.fasta
-
-# C++ single-threaded
-g++ -std=c++11 -O3 fasta_singlethread_c.cpp -o fasta_singlethread_c
-# Run after compilation ( ~2.5 s for 3.0 GB FASTA file):
-time ./fasta_singlethread_c data/mini.fasta
 ```
