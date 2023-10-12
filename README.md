@@ -9,18 +9,6 @@ Prints indices of all headers and sequences in a FASTA file:
 3. Sequence start position
 4. Sequence end position
 
-Example input [data/mini.fasta](data/mini.fasta):
-
-```fasta
->1AHW_ED
-eiqlqqsgaelvrpgalvklsckasgfniKDYYmhwvkqrpeqglewigliDpENgNTIy
-dpkfqgkasitadtssntaylqlssltsedtavyycarDNSYyfdywgqgttltvss---
--------DikmtqspssmyaslgervtitckasQdiRkYlnwyqqkpwkspktliyYats
-ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
->1BJ1_HL
-...
-```
-
 Running:
 ```bash
 # Find mini.fasta header start/end, sequence start/end indices, using 4 cores
@@ -34,6 +22,18 @@ $ fasta_parallel.py data/mini.fasta 4
 1242 1250 1251 1493
 1494 1502 1503 1754
 1755 1763 1764 2006
+```
+
+Example input [data/mini.fasta](data/mini.fasta):
+
+```fasta
+>1AHW_ED
+eiqlqqsgaelvrpgalvklsckasgfniKDYYmhwvkqrpeqglewigliDpENgNTIy
+dpkfqgkasitadtssntaylqlssltsedtavyycarDNSYyfdywgqgttltvss---
+-------DikmtqspssmyaslgervtitckasQdiRkYlnwyqqkpwkspktliyYats
+ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
+>1BJ1_HL
+...
 ```
 
 ## Usage and speed comparison (3.0 GB FASTA file)
