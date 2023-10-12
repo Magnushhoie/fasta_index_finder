@@ -56,21 +56,6 @@ grep -A 1 -b ">" data/humangenome.fsa |  grep -Eo '^[0-9]+' |  awk '{printf "%s\
 
 ### Parallel processing logic
 
-Since header start/end also gives start/ends of sequences
-only the first is required, found with this code logic:
-
-```python
-# Process chunk code:
-headers = [(m.start() + start, m.end() + start) for m in re.finditer(b">.*", chunk)]
-
-# Calculate sequence start/end from header/start end
-for i, (s, e) in enumerate(headers[:-1]):
-    seq_start = e + 1  # Sequence starts after the header
-    seq_end = headers[i + 1][0] - 1  # Sequence ends before the next header
-    out = [s, e, seq_start, seq_end]
-    results.append(out)
-```
-
 Parallel processing works by first reading the file into memory with mmap, then accessing separate chunks and processing in parallell.
 
 
@@ -90,4 +75,19 @@ with Pool(num_processes) as pool:
             for i in range(len(start_positions) - 1)
         ],
     )
+```
+
+Since header start/end also gives start/ends of sequences
+only the first is required, found with this code logic:
+
+```python
+# Process chunk code:
+headers = [(m.start() + start, m.end() + start) for m in re.finditer(b">.*", chunk)]
+
+# Calculate sequence start/end from header/start end
+for i, (s, e) in enumerate(headers[:-1]):
+    seq_start = e + 1  # Sequence starts after the header
+    seq_end = headers[i + 1][0] - 1  # Sequence ends before the next header
+    out = [s, e, seq_start, seq_end]
+    results.append(out)
 ```
