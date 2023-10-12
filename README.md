@@ -36,15 +36,15 @@ $ fasta_parallel.py data/mini.fasta 4
 ## Usage and speed comparison
 
 ```bash
-# Python parallel processing ( ~1.0 s for 3.0 GB FASTA file w/ 16 cores)
+# Python parallel processing: ~1.0 s for 3.0 GB FASTA file w/ 16 cores
 time python fasta_parallel.py data/mini.fasta 2
 
-# Python: Single-threaded ( ~2.9 s for 3.0 GB FASTA file)
+# Python: Single-threaded: ~2.9 s for 3.0 GB FASTA file
 time python fasta_single.py data/mini.fasta
 
 # C++ single-threaded
 g++ -std=c++11 -O3 fasta_singlethread_c.cpp -o fasta_singlethread_c
-# Run after compilation ( ~2.5 s for 3.0 GB FASTA file):
+# Run after compilation: ~2.5 s for 3.0 GB FASTA file:
 time ./fasta_singlethread_c data/mini.fasta
 ```
 
