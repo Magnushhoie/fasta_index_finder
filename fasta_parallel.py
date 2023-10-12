@@ -18,7 +18,8 @@ def process_chunk(start, end, file_path):
     #
     # Core logic:
     # Find all headers in the chunk and store their start and end positions
-    headers = [(m.start() + start, m.end() + start) for m in re.finditer(b'>[^n]*', mmapped_file)]
+    #
+    headers = [(m.start() + start, m.end() + start) for m in re.finditer(b">.*", chunk)]
     results = []
 
     # If there are no headers in the chunk, return an empty list
