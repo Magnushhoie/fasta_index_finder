@@ -33,22 +33,22 @@ $ fasta_parallel.py data/mini.fasta 4
 1755 1763 1764 2006
 ```
 
-## Usage and speed comparison
+## Usage and speed comparison (3.0 GB FASTA file)
 
 ```bash
-# Python parallel processing: ~1.0 s for 3.0 GB FASTA file w/ 16 cores
-time python fasta_parallel.py data/mini.fasta 2
+# Python parallel processing: ~1.0  w/ 16 cores
+time python fasta_parallel.py data/humangenome.fsa 2
 
-# Python: Single-threaded: ~2.9 s for 3.0 GB FASTA file
-time python fasta_single.py data/mini.fasta
+# Python: Single-threaded: ~2.9 s
+time python fasta_single.py data/humangenome.fsa
 
-# C++ single-threaded
+# C++ single-threaded: ~2.5 s
+# Compile and run:
 g++ -std=c++11 -O3 fasta_singlethread_c.cpp -o fasta_singlethread_c
-# Run after compilation: ~2.5 s for 3.0 GB FASTA file:
-time ./fasta_singlethread_c data/mini.fasta
+time ./fasta_singlethread_c data/humangenome.fsa
 ```
 
-## Parallel processing logic
+### Parallel processing logic
 
 Since header start/end also gives start/ends of sequences
 only the first is required, found with this code logic:
