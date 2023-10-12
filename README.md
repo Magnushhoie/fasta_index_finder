@@ -49,6 +49,9 @@ time python fasta_single.py data/humangenome.fsa
 # Compile and run:
 g++ -std=c++11 -O3 fasta_singlethread_c.cpp -o fasta_singlethread_c
 time ./fasta_singlethread_c data/humangenome.fsa
+
+# BASH one-line, finds byte offsets
+grep -A 1 -b ">" data/humangenome.fsa |  grep -Eo '^[0-9]+' |  awk '{printf "%s\n%s\n", $1-1, $1}' | tail -n +2 | paste - - - -
 ```
 
 ### Parallel processing logic
