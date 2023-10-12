@@ -1,5 +1,8 @@
 ## FASTA index finder
 
+Inspired by 22112 High Performance Computing in Life Science: What affects performance?
+[https://teaching.healthtech.dtu.dk/22112/index.php/What_affects_performance](https://teaching.healthtech.dtu.dk/22112/index.php/What_affects_performance)
+
 Prints indices of all headers and sequences in a FASTA file:
 1. Header start position
 2. Header end position
