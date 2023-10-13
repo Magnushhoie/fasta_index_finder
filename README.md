@@ -44,6 +44,7 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 | Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_singlethread_mmaped.py](fasta_singlethread_mmapped.py) | Python process memory-mapped file        |
 | C++ (Single-threaded)           | ~2.5s           | [fasta_singlethread_c.cpp](fasta_singlethread_c.cpp) | C++ process lines while reading            |
 | C++ (Single-threaded mmapped)   | ~1.2s           | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmaped.cpp) | C++ process memory-mapped file |
+| Python (Single-threaded, chunked)                  | ~1.1s           | [fasta_singlethread_chunked.py](fasta_singlethread_chunked.py) | Processes 1 MB of file at once      |
 | BASH one-liner                  | ~1.1s           | [bash_oneliner.sh](bash_oneliner.sh) | BASH one-liner that finds byte offsets        |
 | Python (Parallel Processing, mmapped)    | ~1.0s           | [fasta_parallel_mmapped.py](fasta_parallel_mmapped.py) | Python with parallel processing on mmaped file, using 16 cores |
 | Baseline: Cat read file         | ~0.7s           | `time cat data/humangenome.fsa > /dev/null` | Using `cat` to read the file as a baseline    |
@@ -66,9 +67,6 @@ time ./fasta_singlethread_mmaped data/humangenome.fsa
 
 # BASH one-liner, finds byte offsets: ~1.1 s
 grep -A 1 -b "^>" data/humangenome.fsa |  grep -Eo '^[0-9]+' |  awk '{printf "%s\n%s\n", $1-1, $1}' | tail -n +2 | paste - - - -
-
-# Python parallel processing: ~1.0  w/ 16 cores
-time python fasta_parallel_mmapped.py data/humangenome.fsa 2
 ```
 
 ### Parallel processing logic
