@@ -54,10 +54,11 @@ Effect of chunk-size (Python single-threaded, chunked)
 - 512 bytes: ~11 s
 - 1024 bytes ~7 s
 - 0.5 MB: ~1.5 s
-- 1 MB: ~1.0 s
+- **1 MB: ~1.1 s**
 - 2 MB: ~1.1 s
 - 8 MB: 1.4 s
-- 128 MB: ~ 2.5 s
+- 128 MB: ~ 2.4 s
+- 4 GB: ~ 2.4 s
 
 ## Usage
 
