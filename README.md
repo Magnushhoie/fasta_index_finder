@@ -41,9 +41,9 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 | Method                          | Approximate Time | Code/Command       | Description                                   |
 |---------------------------------|-----------------|--------------------|-----------------------------------------------|
 | Python (Single-threaded, naive)        | ~25.0s           | [fasta_singlethread_naive.py](fasta_singlethread_naive.py) | Python process lines while reading        |
-| Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_singlethread_mmaped.py](fasta_singlethread_mmapped.py) | Python process memory-mapped file        |
+| Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_singlethread_mmapped.py](fasta_singlethread_mmapped.py) | Python process memory-mapped file        |
 | C++ (Single-threaded)           | ~2.5s           | [fasta_singlethread_c.cpp](fasta_singlethread_c.cpp) | C++ process lines while reading            |
-| C++ (Single-threaded mmapped)   | ~1.2s           | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmaped.cpp) | C++ process memory-mapped file |
+| C++ (Single-threaded mmapped)   | ~1.2s           | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmapped.cpp) | C++ process memory-mapped file |
 | Python (Single-threaded, chunked)                  | ~1.1s           | [fasta_singlethread_chunked.py](fasta_singlethread_chunked.py) | Processes 1 MB of file at once      |
 | BASH one-liner                  | ~1.1s           | [bash_oneliner.sh](bash_oneliner.sh) | BASH one-liner that finds byte offsets        |
 | Python (Parallel Processing, mmapped+chunked)    | ~1.0s           | [fasta_parallel_mmapped.py](fasta_parallel_mmapped.py) | Python with parallel processing on mmaped file split into chunks, using 16 cores |
