@@ -62,7 +62,7 @@ time ./fasta_singlethread_c data/humangenome.fsa
 
 # C++ single-threaded mmapped: ~1.2 s
 # Compile and run:
-g++ -std=c++11 -O3  fasta_singlethread_c_mmaped.cpp -o fasta_singlethread_cmmaped -lboost_iostreams
+g++ -std=c++11 -O3  fasta_singlethread_c_mmapped.cpp -o fasta_singlethread_cmmapped -lboost_iostreams
 time ./fasta_singlethread_mmaped data/humangenome.fsa
 
 # BASH one-liner, finds byte offsets: ~1.1 s
