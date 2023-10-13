@@ -40,10 +40,11 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 
 | Method                          | Approximate Time | Code/Command       | Description                                   |
 |---------------------------------|-----------------|--------------------|-----------------------------------------------|
-| Python (Parallel Processing, mmapped)    | ~1.0s           | [fasta_parallel.py](fasta_parallel.py) | Python with parallel processing using 16 cores |
-| Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_single.py](fasta_single.py) | Python with single-threaded processing        |
-| C++ (Single-threaded)           | ~2.5s           | [fasta_singlethread_c.cpp](fasta_singlethread_c.cpp) | C++ with single-threaded processing            |
-| C++ (Single-threaded mmapped)   | ~1.2s           | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmaped.cpp) | C++ with single-threaded processing and memory mapping |
+| Python (Parallel Processing, mmapped)    | ~1.0s           | [fasta_parallel.py](fasta_parallel.py) | Python with parallel processing on mmaped file, using 16 cores |
+| Python (Single-threaded, naive)        | ~25.0s           | [fasta_singlethread_naive.py](fasta_singlethread_naive.py) | Process lines while reading        |
+| Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_singlethread.py](fasta_singlethread.py) | Process lines in mmaped file        |
+| C++ (Single-threaded)           | ~2.5s           | [fasta_singlethread_c.cpp](fasta_singlethread_c.cpp) | C++ process lines while reading            |
+| C++ (Single-threaded mmapped)   | ~1.2s           | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmaped.cpp) | C++ process mmaped file |
 | BASH one-liner                  | ~1.1s           | [bash_oneliner.sh](bash_oneliner.sh) | BASH one-liner that finds byte offsets        |
 | Baseline: Cat read file         | ~0.7s           | `time cat data/humangenome.fsa > /dev/null` | Using `cat` to read the file as a baseline    |
 
