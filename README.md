@@ -41,11 +41,11 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 | Method                          | Approximate Time | Code/Command       | Description                                   |
 |---------------------------------|-----------------|--------------------|-----------------------------------------------|
 | Python (Single-threaded, naive)        | ~25.0s           | [fasta_singlethread_naive.py](fasta_singlethread_naive.py) | Python process lines while reading        |
-| Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_singlethread.py](fasta_singlethread.py) | Python process memory-mapped file        |
+| Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_singlethread_mmaped.py](fasta_singlethread_mmapped.py) | Python process memory-mapped file        |
 | C++ (Single-threaded)           | ~2.5s           | [fasta_singlethread_c.cpp](fasta_singlethread_c.cpp) | C++ process lines while reading            |
 | C++ (Single-threaded mmapped)   | ~1.2s           | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmaped.cpp) | C++ process memory-mapped file |
 | BASH one-liner                  | ~1.1s           | [bash_oneliner.sh](bash_oneliner.sh) | BASH one-liner that finds byte offsets        |
-| Python (Parallel Processing, mmapped)    | ~1.0s           | [fasta_parallel.py](fasta_parallel.py) | Python with parallel processing on mmaped file, using 16 cores |
+| Python (Parallel Processing, mmapped)    | ~1.0s           | [fasta_parallel_mmapped.py](fasta_parallel_mmapped.py) | Python with parallel processing on mmaped file, using 16 cores |
 | Baseline: Cat read file         | ~0.7s           | `time cat data/humangenome.fsa > /dev/null` | Using `cat` to read the file as a baseline    |
 
 ## Usage
