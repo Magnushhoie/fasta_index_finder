@@ -49,6 +49,16 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 | Python (Parallel Processing, mmapped)    | ~1.0s           | [fasta_parallel_mmapped.py](fasta_parallel_mmapped.py) | Python with parallel processing on mmaped file, using 16 cores |
 | Baseline: Cat read file         | ~0.7s           | `time cat data/humangenome.fsa > /dev/null` | Using `cat` to read the file as a baseline    |
 
+Effect of chunk-size (Python single-threaded, chunked)
+- 100 bytes: ~50 s
+- 512 bytes: ~11 s
+- 1024 bytes ~7 s
+- 0.5 MB: ~1.5 s
+- 1 MB: ~1.0 s
+- 2 MB: ~1.1 s
+- 8 MB: 1.4 s
+- 128 MB: ~ 2.5 s
+
 ## Usage
 
 ```bash
