@@ -57,7 +57,6 @@ def find_chunk_starts(mmapped_file, chunk_size=500):
     # Determine chunk start positions by finding newlines
     for start in range(0, len(mmapped_file), chunk_size):
         end = start + 100  # Additional bytes to ensure we find a newline
-        chunk = mmapped_file[start:end]
 
         # Find the first newline
         chunk = mmapped_file[start:end]
