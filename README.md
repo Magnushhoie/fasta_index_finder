@@ -37,15 +37,15 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 ```
 
 ## Speed comparison (3.0 GB FASTA file, repeated runs)
-| Method                          | Code/Command       | Description                                   | Approximate Time |
-|---------------------------------|--------------------|-----------------------------------------------|-----------------|
-| Python (Parallel Processing)    | [fasta_parallel.py](fasta_parallel.py) | Python with parallel processing using 16 cores, with memory mapping | ~1.0s           |
-| Python (Single-threaded)        | [fasta_singlethread.py](fasta_singlethread.py) | Python with single-threaded processing and memory mapping        | ~2.9s           |
-| C++ (Single-threaded)           | [fasta_singlethread_c.cpp](fasta_singlethread_c.cpp) | C++ with single-threaded processing            | ~2.5s           |
-| C++ (Single-threaded mmapped)   | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmaped.cpp) | C++ with single-threaded processing and memory mapping | ~1.2s           |
-| BASH one-liner                  | [bash_oneliner.sh](bash_oneliner.sh) | BASH one-liner that finds byte offsets        | ~1.1s           |
-| Baseline: Cat read file         | `time cat data/humangenome.fsa > /dev/null` | Using `cat` to read the file as a baseline    | ~0.7s           |
 
+| Method                          | Approximate Time | Code/Command       | Description                                   |
+|---------------------------------|-----------------|--------------------|-----------------------------------------------|
+| Python (Parallel Processing, mmapped)    | ~1.0s           | [fasta_parallel.py](fasta_parallel.py) | Python with parallel processing using 16 cores |
+| Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_single.py](fasta_single.py) | Python with single-threaded processing        |
+| C++ (Single-threaded)           | ~2.5s           | [fasta_singlethread_c.cpp](fasta_singlethread_c.cpp) | C++ with single-threaded processing            |
+| C++ (Single-threaded mmapped)   | ~1.2s           | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmaped.cpp) | C++ with single-threaded processing and memory mapping |
+| BASH one-liner                  | ~1.1s           | [bash_oneliner.sh](bash_oneliner.sh) | BASH one-liner that finds byte offsets        |
+| Baseline: Cat read file         | ~0.7s           | `time cat data/humangenome.fsa > /dev/null` | Using `cat` to read the file as a baseline    |
 
 ## Usage
 
