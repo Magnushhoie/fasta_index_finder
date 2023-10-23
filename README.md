@@ -36,7 +36,7 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 ...
 ```
 
-## Speed comparison (3.0 GB FASTA file, repeated runs)
+## Speed comparison (3.0 GB humangenome.fsa FASTA file, repeated runs)
 
 | Method                          | Approximate Time | Code/Command       | Description                                   |
 |---------------------------------|-----------------|--------------------|-----------------------------------------------|
@@ -49,7 +49,7 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 | Python (Parallel Processing, mmapped+chunked)    | ~1.0s           | [fasta_parallel_mmapped.py](fasta_parallel_mmapped.py) | Python with parallel processing on mmaped file split into chunks, using 16 cores |
 | Baseline: Cat read file         | ~0.7s           | `time cat data/humangenome.fsa > /dev/null` | Using `cat` to read the file as a baseline    |
 
-Effect of chunk-size (Python single-threaded, chunked)
+Effect of chunk-size, Python chunked (humangenome.fsa, 24 entries):
 - 100 bytes: ~50 s
 - 512 bytes: ~11 s
 - 1024 bytes ~7 s
@@ -59,6 +59,20 @@ Effect of chunk-size (Python single-threaded, chunked)
 - 8 MB: 1.4 s
 - 128 MB: ~ 2.4 s
 - 4 GB: ~ 2.4 s
+
+Performance cost of printing to terminal (mixseq.fsa, 188K entries):
+- Python chunked script: ~21
+- Python chunkedscript (redirect to file): 9.4 s
+- C++ script: ~12 s
+- C++ script (redirect to file): 4.6 s
+
+Buffering prints (e.g. 100 lines instead of every 1 line) to terminal:
+- 1 lines: ~21 s
+- 10 lines: ~19s
+- 100 lines: ~16 s <--- optimal, 1.3x faster
+- 1,000 lines: ~18 s
+- 10,000 lines: ~24 s
+- 100,000 lines: ~26 s
 
 ## Usage
 
