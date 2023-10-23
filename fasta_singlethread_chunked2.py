@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 # Lesson 4, ex 3
 import sys
+import time
 
-if len(sys.argv) != 3:
-    print("Usage: index1.py <input fasta file> <buffer_int>")
+if len(sys.argv) != 2:
+    print("Usage: index1.py <input fasta file>")
     sys.exit(1)
 
 # Define the size of the chunks to read from the file (in bytes)
@@ -21,7 +22,6 @@ except IOError as err:
 file_pos = 0  # Keep track of the global file position (bytes)
 header_L = list()  # List to store the starting indices of header_L
 newline_L = list()  # List to store the ending indices of header_L
-
 
 # Parse through the file chunk by chunk
 while True:
@@ -64,16 +64,15 @@ while True:
 # Close the file after reading
 infile.close()
 
-# Display the start and end indices of headers and sequences
-# Use pre-allocated buffer of buf_size (100) lines to reduce print (sys.stdout) calls
-buf_size = int(sys.argv[2])
-buf = [None] * buf_size  # Pre-allocate buffer
-index = 0  # Buffer index
-
-# Change buffering behavior of stdout
-my_stdout = open(1, "w", buffering=100000)
+# Buffer prints
+#my_stdout = open(1, "w", buffering=10000000) # 42 s
+#my_stdout = open(1, "w", buffering=1000000) # 17 s ?
+my_stdout = open(1, "w", buffering=100000) # 15.6 s
+#my_stdout = open(1, "w", buffering=10000) # 17 s
+#my_stdout = open(1, "w", buffering=1000) # 19 s 
 sys.stdout = my_stdout
 
+# Display the start and end indices of headers and sequences
 for i in range(len(header_L)):
     headstart = header_L[i]
     headend = newline_L[i]
@@ -85,14 +84,7 @@ for i in range(len(header_L)):
     else:
         seqend = file_pos - 1
 
-    buf[index] = " ".join([str(headstart), str(headend), str(seqstart), str(seqend)])
-    index += 1
+    # Print the indices
+    print(headstart, headend, seqstart, seqend)
 
-    # Print buffer
-    if index == buf_size:
-        sys.stdout.write("\n".join(buf) + "\n")
-        index = 0
-
-# Print any remaining lines
-if index > 0:
-    sys.stdout.write("\n".join(buf[:index]) + "\n")
+sys.stdout.flush()
