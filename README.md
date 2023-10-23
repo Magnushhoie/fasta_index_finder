@@ -66,7 +66,7 @@ Performance cost of printing to terminal (mixseq.fsa, 188K entries):
 - C++ script: ~12 s
 - C++ script (redirect to file): 4.6 s
 
-Buffering prints (e.g. 100 lines instead of every 1 line) to terminal:
+[Buffering prints](fasta_singlethread_chunked_printbuffer.py) (e.g. 100 lines instead of every 1 line) to terminal:
 - 1 lines: ~21 s
 - 10 lines: ~19s
 - 100 lines: ~16 s <--- optimal, 1.3x faster
