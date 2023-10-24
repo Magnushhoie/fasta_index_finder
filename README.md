@@ -3,13 +3,13 @@
 Inspired by 22112 High Performance Computing in Life Science: What affects performance?
 [https://teaching.healthtech.dtu.dk/22112/index.php/What_affects_performance](https://teaching.healthtech.dtu.dk/22112/index.php/What_affects_performance)
 
-Prints indices of all headers and sequences in a FASTA file:
+The programs in this repository prints indices of all headers and sequences in a FASTA file:
 1. Header start position
 2. Header end position
 3. Sequence start position
 4. Sequence end position
 
-Running:
+Example:
 ```bash
 # Find mini.fasta header start/end, sequence start/end indices, using 4 cores
 $ fasta_parallel.py data/mini.fasta 4
@@ -24,8 +24,7 @@ $ fasta_parallel.py data/mini.fasta 4
 1755 1763 1764 2006
 ```
 
-Example input [data/mini.fasta](data/mini.fasta):
-
+Example FASTA input [data/mini.fasta](data/mini.fasta):
 ```fasta
 >1AHW_ED
 eiqlqqsgaelvrpgalvklsckasgfniKDYYmhwvkqrpeqglewigliDpENgNTIy
@@ -60,7 +59,6 @@ Effect of chunk-size ([Python chunked](fasta_singlethread_chunked), humangenome.
 - 128 MB: ~ 2.4 s
 - 4 GB: ~ 2.4 s (full)
 
-
 Effect of buffering print statements, [Python chunked](fasta_singlethread_chunked_printbuffer.py) (e.g. 100 lines instead of every 1 line):
 - 1 lines: ~21 s
 - 10 lines: ~19s
@@ -74,7 +72,6 @@ Effect of saving to file instead of printing (mixseq.fsa, 188K entries):
 - Python chunked (to file): 9.4 s <--- 2.3x faster
 - C++ script (terminal): ~12 s
 - C++ script (to file): ~4.6 s <--- 2.6x faster
-
 
 ## Usage
 
