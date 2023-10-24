@@ -54,25 +54,27 @@ Effect of chunk-size ([Python chunked](fasta_singlethread_chunked), humangenome.
 - 512 bytes: ~11 s
 - 1024 bytes ~7 s
 - 0.5 MB: ~1.5 s
-- 1 MB: ~1.1 s  <--- optimal, 2.2x faster loading full
+- 1 MB: ~1.1 s  <--- optimal, 2.2x faster than loading full
 - 2 MB: ~1.1 s
 - 8 MB: 1.4 s
 - 128 MB: ~ 2.4 s
 - 4 GB: ~ 2.4 s (full)
 
-Performance cost of printing to terminal (mixseq.fsa, 188K entries):
-- Python chunked (terminal): ~21 s
-- C++ script (terminal): ~12 s
-- Python chunked (to file): 9.4 s
-- C++ script (to file): ~4.6 s
 
-[Buffering prints](fasta_singlethread_chunked_printbuffer.py) (e.g. 100 lines instead of every 1 line) to terminal:
+Effect of buffering print statements, [Python chunked](fasta_singlethread_chunked_printbuffer.py) (e.g. 100 lines instead of every 1 line):
 - 1 lines: ~21 s
 - 10 lines: ~19s
 - 100 lines: ~16 s <--- optimal, 1.3x faster
 - 1,000 lines: ~18 s
 - 10,000 lines: ~24 s
 - 100,000 lines: ~26 s
+
+Effect of saving to file instead of printing (mixseq.fsa, 188K entries):
+- Python chunked (terminal): ~21 s
+- Python chunked (to file): 9.4 s <--- 2.3x faster
+- C++ script (terminal): ~12 s
+- C++ script (to file): ~4.6 s <--- 2.6x faster
+
 
 ## Usage
 
