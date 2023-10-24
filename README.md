@@ -43,9 +43,9 @@ ladgvpsrfsgsgsgqdysltisslesddtatyyclqHGESpYtfgggtklein
 | Python (Single-threaded, mmapped)        | ~2.9s           | [fasta_singlethread_mmapped.py](fasta_singlethread_mmapped.py) | Python process memory-mapped file        |
 | C++ (Single-threaded)           | ~2.5s           | [fasta_singlethread_c.cpp](fasta_singlethread_c.cpp) | C++ process lines while reading            |
 | C++ (Single-threaded mmapped)   | ~1.2s           | [fasta_singlethread_c_mmapped.cpp](fasta_singlethread_c_mmapped.cpp) | C++ process memory-mapped file |
-| Python (Single-threaded, chunked)                  | ~1.1s           | [fasta_singlethread_chunked.py](fasta_singlethread_chunked.py) | Processes 1 MB of file at once      |
+| Python (Single-threaded, chunked)                  | ~1.1s           | [fasta_singlethread_chunked.py](fasta_singlethread_chunked.py) | Python process 1 MB chunk at a time      |
 | BASH one-liner                  | ~1.1s           | [bash_oneliner.sh](bash_oneliner.sh) | BASH one-liner that finds byte offsets        |
-| Python (Parallel Processing, mmapped+chunked)    | ~1.0s           | [fasta_parallel_mmapped.py](fasta_parallel_mmapped.py) | Python with parallel processing on mmaped file split into chunks, using 16 cores |
+| Python (Parallel Processing, mmapped+chunked)    | ~1.0s           | [fasta_parallel_mmapped.py](fasta_parallel_mmapped.py) | Python with parallel processing on mmaped file, split into chunks, using 16 cores |
 | Baseline: Cat read file         | ~0.7s           | `time cat data/humangenome.fsa > /dev/null` | Using `cat` to read the file as a baseline    |
 
 Effect of chunk-size ([Python chunked](fasta_singlethread_chunked), humangenome.fsa, 24 entries):
