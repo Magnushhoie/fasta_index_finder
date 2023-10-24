@@ -62,7 +62,7 @@ Effect of chunk-size, Python chunked (humangenome.fsa, 24 entries):
 
 Performance cost of printing to terminal (mixseq.fsa, 188K entries):
 - Python chunked script: ~21
-- Python chunkedscript (redirect to file): 9.4 s
+- Python chunked script (redirect to file): 9.4 s
 - C++ script: ~12 s
 - C++ script (redirect to file): 4.6 s
 
